@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://f56n7r4exyk7"]
+
+[ext_resource type="Script" uid="uid://c2vldqj68d8ib" path="res://Scripts/enemy.gd" id="1_1f0kj"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ne65n"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hghv2"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hghv2"]
+
+[node name="Enemy" type="CharacterBody3D" groups=["enemies"]]
+script = ExtResource("1_1f0kj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_ne65n")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["enemies"]]
+top_level = true
+shape = SubResource("BoxShape3D_hghv2")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="Area3D" type="Area3D" parent="." groups=["enemies"]]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1.93621, 0, 0, 0, 1.93621, 0, 0, 0, 1.93621, 0, 0, 0)
+shape = SubResource("SphereShape3D_hghv2")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

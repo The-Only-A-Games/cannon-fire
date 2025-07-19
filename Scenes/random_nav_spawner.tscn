@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3k46knaqa88i"]
+
+[ext_resource type="Script" uid="uid://c4owrtybon04g" path="res://Scripts/random_nav_spawner.gd" id="1_jlyc5"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_mqpul"]
+vertices = PackedVector3Array(-19.2993, 1, -6.41545, -17.7993, 1, -6.41545, -18.0493, 1, -11.1654, -24.7993, 1, -5.66545, -19.5493, 1, -5.16545, -24.5493, 1, -11.1654, 12.4507, 1, -6.41545, 12.7007, 1, -11.1654, 13.9507, 1, -6.41545, 14.2007, 1, -4.66545, 19.4507, 1, -4.91545, 19.4507, 1, -11.1654, -19.5493, 1, 13.3346, -24.5493, 1, 14.3346, 14.2007, 1, 12.8346, 19.4507, 1, 13.0846, 13.9507, 1, 14.5846, 12.4507, 1, 14.5846, 12.7007, 1, 19.3346, 19.4507, 1, 19.3346, -18.0493, 1, 19.3346, -17.7993, 1, 14.5846, -19.2993, 1, 14.5846, -24.5493, 1, 19.3346)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(0, 4, 3), PackedInt32Array(3, 5, 0), PackedInt32Array(0, 5, 2), PackedInt32Array(1, 2, 6), PackedInt32Array(6, 2, 7), PackedInt32Array(8, 6, 7), PackedInt32Array(10, 9, 8), PackedInt32Array(7, 11, 8), PackedInt32Array(8, 11, 10), PackedInt32Array(4, 12, 3), PackedInt32Array(3, 12, 13), PackedInt32Array(9, 10, 14), PackedInt32Array(14, 10, 15), PackedInt32Array(18, 17, 16), PackedInt32Array(16, 14, 15), PackedInt32Array(18, 16, 19), PackedInt32Array(19, 16, 15), PackedInt32Array(22, 21, 20), PackedInt32Array(13, 12, 22), PackedInt32Array(13, 22, 23), PackedInt32Array(23, 22, 20), PackedInt32Array(21, 17, 20), PackedInt32Array(20, 17, 18)]
+
+[node name="RandomNavSpawner" type="NavigationRegion3D"]
+navigation_mesh = SubResource("NavigationMesh_mqpul")
+script = ExtResource("1_jlyc5")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(-1.80726e-06, 0, -1, 0, 1, 0, 41.3453, 0, -4.37114e-08, 16.7879, 0, 4.01636)
+use_collision = true
+size = Vector3(0.495239, 1, 6.14941)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(-1.80726e-06, 0, -1, 0, 1, 0, 41.3453, 0, -4.37114e-08, -22.2246, 0, 4.01636)
+use_collision = true
+size = Vector3(0.495239, 1, 6.14941)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(41.3453, 0, 0, 0, 1, 0, 0, 0, 1, -2.64464, 0, -8.79191)
+use_collision = true
+size = Vector3(1.08301, 1, 5.74707)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(41.3453, 0, 0, 0, 1, 0, 0, 0, 1, -2.64464, 0, 16.9717)
+use_collision = true
+size = Vector3(1.08301, 1, 5.74707)

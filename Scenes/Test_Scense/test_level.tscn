@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://cy6jftiqjmgf"]
+
+[ext_resource type="Texture2D" uid="uid://c1e4se8bexlw6" path="res://Assets/checkboard.png" id="1_cox41"]
+[ext_resource type="PackedScene" uid="uid://c1ln68kfwmjfi" path="res://Scenes/cannon.tscn" id="2_u2cn3"]
+[ext_resource type="PackedScene" uid="uid://hcw86avi5rfb" path="res://Scenes/Test_Scense/test_spawner.tscn" id="4_v1hxw"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_u2cn3"]
+vertices = PackedVector3Array(-87.6103, -0.328247, -80.0964, -87.6103, -0.328247, 96.1536, 80.8897, -0.328247, 96.1536, 80.8897, -0.328247, -80.0964)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u2cn3"]
+albedo_color = Color(0.861304, 0.451357, 0.35887, 1)
+albedo_texture = ExtResource("1_cox41")
+uv1_scale = Vector3(11.685, 11.685, 11.685)
+uv1_triplanar = true
+
+[node name="TestLevel" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -2.97096, 12.33, 4.50868)
+
+[node name="Cannon" parent="." instance=ExtResource("2_u2cn3")]
+unique_name_in_owner = true
+transform = Transform3D(0.996866, 0, 0, 0, 0.996866, 0, 0, 0, 0.996866, -3.76694, -0.401295, 3.93523)
+camera_path = NodePath("../Camera3D")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.247777, 0.968817, 0, -0.968817, -0.247777, 0, 14.8163, 0)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_u2cn3")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(136.799, 0, 0, 0, 136.799, 0, 0, 0, 136.799, -3.31612, -4.36687, 8.02544)
+use_collision = true
+size = Vector3(1.23969, 0.0542603, 1.29565)
+material = SubResource("StandardMaterial3D_u2cn3")
+
+[node name="Test_Spawner" parent="NavigationRegion3D" instance=ExtResource("4_v1hxw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.830069, -11.2598)
+nav = NodePath("..")

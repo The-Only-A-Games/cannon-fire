@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://hcw86avi5rfb"]
+
+[ext_resource type="Script" uid="uid://1j2mfngpfkim" path="res://Scripts/spawner.gd" id="1_l07h8"]
+
+[sub_resource type="HeightMapShape3D" id="HeightMapShape3D_uexcv"]
+
+[node name="Test_Spawner" type="CollisionShape3D"]
+shape = SubResource("HeightMapShape3D_uexcv")
+script = ExtResource("1_l07h8")
+
+[node name="Marker3D" type="Marker3D" parent="."]
