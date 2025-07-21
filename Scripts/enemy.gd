@@ -28,12 +28,13 @@ func _physics_process(delta):
 	
 	if (health <= 0):
 		print("Enemy just dies")
+		get_node("/root/TestLevel").add_score(1)
 		queue_free()
 
 
 func _on_area_3d_body_entered(body):
 	if (body.is_in_group("player")):
-		print("hurt player")
+		get_node("/root/TestLevel").player_take_damage(10)
 		queue_free()
 
 

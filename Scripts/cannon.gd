@@ -9,6 +9,8 @@ var camera
 @onready var marker_3d = $Marker3D
 const PROJECTILE = preload("res://Scenes/projectile.tscn")
 
+var health = 100
+
 func _ready():
 	camera = get_node(camera_path)
 
@@ -42,9 +44,17 @@ func _physics_process(delta):
 	if (Input.is_action_just_pressed("shoot")):
 		shoot()
 		
+		
+	health = get_node("/root/TestLevel").get_player_health()
+	if (health <= 0):
+		get_node("/root/TestLevel").show_death_menu()
+		queue_free()
 
 func shoot():
 	var bullet = PROJECTILE.instantiate()
 	marker_3d.add_child(bullet)
 	
 	bullet.global_transform = marker_3d.global_transform
+
+func take_damage(n):
+	health -= n

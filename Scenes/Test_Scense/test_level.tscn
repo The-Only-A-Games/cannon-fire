@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cy6jftiqjmgf"]
+[gd_scene load_steps=8 format=3 uid="uid://cy6jftiqjmgf"]
 
 [ext_resource type="Texture2D" uid="uid://c1e4se8bexlw6" path="res://Assets/checkboard.png" id="1_cox41"]
+[ext_resource type="Script" uid="uid://cokwds4xc7d4k" path="res://Scripts/game_manager.gd" id="1_v1hxw"]
 [ext_resource type="PackedScene" uid="uid://c1ln68kfwmjfi" path="res://Scenes/cannon.tscn" id="2_u2cn3"]
 [ext_resource type="PackedScene" uid="uid://hcw86avi5rfb" path="res://Scenes/Test_Scense/test_spawner.tscn" id="4_v1hxw"]
 
@@ -14,7 +15,11 @@ albedo_texture = ExtResource("1_cox41")
 uv1_scale = Vector3(11.685, 11.685, 11.685)
 uv1_triplanar = true
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_v1hxw"]
+blend_mode = 2
+
 [node name="TestLevel" type="Node3D"]
+script = ExtResource("1_v1hxw")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -2.97096, 12.33, 4.50868)
@@ -37,5 +42,83 @@ size = Vector3(1.23969, 0.0542603, 1.29565)
 material = SubResource("StandardMaterial3D_u2cn3")
 
 [node name="Test_Spawner" parent="NavigationRegion3D" instance=ExtResource("4_v1hxw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.830069, -11.2598)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.259961, -0.648388, -11.2598)
 nav = NodePath("..")
+
+[node name="Test_Spawner2" parent="NavigationRegion3D" instance=ExtResource("4_v1hxw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3666, -0.648388, -11.2598)
+nav = NodePath("..")
+
+[node name="Test_Spawner3" parent="NavigationRegion3D" instance=ExtResource("4_v1hxw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3666, -0.648388, 3.93612)
+nav = NodePath("..")
+
+[node name="Test_Spawner4" parent="NavigationRegion3D" instance=ExtResource("4_v1hxw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90179, -0.648388, 24.2195)
+nav = NodePath("..")
+
+[node name="Test_Spawner5" parent="NavigationRegion3D" instance=ExtResource("4_v1hxw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.8482, -0.648388, 24.2195)
+nav = NodePath("..")
+
+[node name="Test_Spawner6" parent="NavigationRegion3D" instance=ExtResource("4_v1hxw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.8482, -0.648388, 2.06292)
+nav = NodePath("..")
+
+[node name="Test_Spawner7" parent="NavigationRegion3D" instance=ExtResource("4_v1hxw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.8482, -0.648388, -19.6458)
+nav = NodePath("..")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "Enemies killed: 0"
+metadata/_edit_use_anchors_ = true
+
+[node name="DeathMenu" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+
+[node name="Label" type="Label" parent="CanvasLayer/DeathMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.5
+offset_top = -11.5
+offset_right = 43.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game Over"
+
+[node name="Button" type="Button" parent="CanvasLayer/DeathMenu"]
+layout_mode = 0
+offset_left = 543.0
+offset_top = 350.0
+offset_right = 608.0
+offset_bottom = 381.0
+text = "Restart"
+
+[node name="Health" type="ProgressBar" parent="CanvasLayer"]
+material = SubResource("CanvasItemMaterial_v1hxw")
+offset_right = 186.0
+offset_bottom = 27.0
+value = 100.0
+show_percentage = false
+
+[connection signal="pressed" from="CanvasLayer/DeathMenu/Button" to="." method="_on_button_pressed"]
