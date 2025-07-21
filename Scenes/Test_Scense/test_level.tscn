@@ -22,7 +22,7 @@ blend_mode = 2
 script = ExtResource("1_v1hxw")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -2.97096, 12.33, 4.50868)
+transform = Transform3D(1, 0, 0, 0, 0.271827, 0.962346, 0, -0.962346, 0.271827, -2.97096, 12.33, 6.60049)
 
 [node name="Cannon" parent="." instance=ExtResource("2_u2cn3")]
 unique_name_in_owner = true
